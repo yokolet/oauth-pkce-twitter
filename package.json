@@ -1,0 +1,17 @@
+{
+  "name": "another-auth",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "client:start": "yarn workspace client start",
+    "server:dev": "yarn workspace server dev",
+    "client:add": "yarn workspace client add",
+    "server:add": "yarn workspace server add",
+    "migrate-db": "yarn workspace server prisma-migrate"
+  }
+}
