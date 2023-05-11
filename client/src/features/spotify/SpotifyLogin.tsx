@@ -8,7 +8,7 @@ import {
   selectTokenExpiryDate,
 } from '../auth/authSlice';
 import { setUserProfileAsync } from './spotifySlice';
-import { getAuthorizeHref } from '../../oauthConfig';
+import { getPKCEAuthorizationHref } from '../../utils/oauthConfig';
 import { getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
 import { useAppDispatch } from '../../app/hooks';
 import { Button, Text, VStack } from '@chakra-ui/react';
@@ -38,7 +38,7 @@ export function SpotifyLogin() {
         <Button
           colorScheme='green'
           aria-label="Log in using OAuth 2.0"
-          onClick={() => window.open(getAuthorizeHref(), '_self')}
+          onClick={() => window.open(getPKCEAuthorizationHref(), '_self')}
         >
           Log in with Spotify
         </Button>
