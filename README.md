@@ -82,5 +82,13 @@ Then, click login button and authorize app.
 
 
 ### Reference
+#### Proof Kay for Code Exchange
+- [RFC 7636: Proof Key for Code Exchange](https://oauth.net/2/pkce/)
+- [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://blog.miniorange.com/auth-flow-with-pkce/)
+- [Authorization Code Flow with PKCE (OAuth) in a React application](https://hceris.com/oauth-authorization-code-flow-pkce-for-react/)
+- [Twitter Documentation: Authentication](https://developer.twitter.com/en/docs/authentication/oauth-2-0/authorization-code)
+- [Spotify for Developers: Authorization Code with PKCE Flow](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow)
+
+#### Implementation
 - [Implementing Authentication with Twitter OAuth 2.0 using Typescript, Express.js and Next.js](https://dev.to/reinforz/implementing-authentication-with-twitter-oauth-20-using-typescript-node-js-express-js-and-next-js-in-a-full-stack-application-353d)
 - [Create a React App with TS, Redux and OAuth 2.0 - Spotify login example](https://medium.com/swlh/create-a-react-app-with-typescript-redux-and-oauth-2-0-7f62d57890df)
