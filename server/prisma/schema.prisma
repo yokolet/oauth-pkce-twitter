@@ -4,12 +4,13 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("TWITTER_DATABASE_URL")
 }
 
 enum UserType {
   local
   spotify
+  twitter
 }
 
 model User {

@@ -1,4 +1,8 @@
-import { addCookieToRes, CLIENT_URL } from './config';
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+
+
+import { addCookieToRes, CLIENT_URL } from './spotifyConfig';
 import axios from 'axios';
 import { Request, Response } from 'express';
 

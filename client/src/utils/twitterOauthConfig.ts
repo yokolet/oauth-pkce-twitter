@@ -1,7 +1,7 @@
-const authEndpoint = 'https://accounts.spotify.com/authorize';
+const authEndpoint = 'https://twitter.com/i/oauth2/authorize';
 
-const client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-const redirect_uri = process.env.REACT_APP_REDIRECT_URI;
+const client_id = process.env.REACT_APP_TWITTER_CLIENT_ID;
+const redirect_uri = process.env.REACT_APP_TWITTER_REDIRECT_URI;
 
 
 export const generateRandomString = (length: number) => {
@@ -32,22 +32,20 @@ async function getPKCEChallenge(code_verifier: string): Promise<string> {
   return challenge;
 }
 
-export const getPKCEAuthorizationHref = (): string => {
+export const getTwitterOauthUrl = (): string => {
   // temporarily uses static code verifier and challenge
-  let code_verifier = process.env.REACT_APP_CODE_VERIFIER;
-  let code_challenge = process.env.REACT_APP_CODE_CHALLENGE;
-  let state = generateRandomString(16);
-  let scope = 'user-read-private user-read-email';
+  let code_challenge = process.env.REACT_APP_TWITTER_CODE_CHALLENGE;
+  let state = "state"; // generateRandomString(16);
+  let scope = ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ");
   // @ts-ignore
   let args = new URLSearchParams({
-      response_type: 'code',
-      client_id,
-      scope,
-      redirect_uri,
-      state,
-      code_challenge_method: 'S256',
-      code_challenge: code_challenge
-    });
-  alert(args);
+    redirect_uri,
+    client_id,
+    state,
+    response_type: 'code',
+    code_challenge,
+    code_challenge_method: "S256",
+    scope,
+  }).toString();
   return `${authEndpoint}?${args}`;
 }

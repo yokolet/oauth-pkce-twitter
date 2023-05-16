@@ -1,7 +1,10 @@
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+
 import { PrismaClient } from "@prisma/client"
 import { CookieOptions, Response } from "express";
 import jwt from "jsonwebtoken";
-import { SpotifyUser } from './oauth2';
+import { SpotifyUser } from './spotifyOauth2';
 
 export const CLIENT_URL = process.env.CLIENT_URL!
 export const SERVER_PORT = process.env.SERVER_PORT!
@@ -12,7 +15,7 @@ export const prisma = new PrismaClient()
 export const JWT_SECRET = process.env.JWT_SECRET!
 
 // cookie name
-export const COOKIE_NAME = 'oauth2_token'
+export const SPOTIFY_COOKIE_NAME = 'oauth2_token'
 
 // cookie setting options
 const cookieOptions: CookieOptions = {
@@ -28,7 +31,7 @@ export function addCookieToRes(res: Response, user: SpotifyUser, accessToken: st
     accessToken,
     name
   }, JWT_SECRET);
-  res.cookie(COOKIE_NAME, token, {  // adding the cookie to response here
+  res.cookie(SPOTIFY_COOKIE_NAME, token, {  // adding the cookie to response here
     ...cookieOptions,
     expires: new Date(Date.now() + 7200 * 1000),
   });

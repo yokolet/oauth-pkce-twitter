@@ -7,18 +7,16 @@ import {
   selectIsLoggedIn,
   selectTokenExpiryDate,
 } from '../auth/authSlice';
-import { setUserProfileAsync } from './spotifySlice';
-import { getPKCEAuthorizationHref } from '../../utils/spotifyOauthConfig';
-import { getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
+import { setUserProfileAsync } from './twitterSlice';
+import { getTwitterOauthUrl } from '../../utils/twitterOauthConfig';
+import { getOAuthParams, getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
 import { useAppDispatch } from '../../app/hooks';
 import { Button, Text, VStack } from '@chakra-ui/react';
 
-const hashParams = getHashParams();
-const access_token = hashParams.access_token;
-const expires_in = hashParams.expires_in;
+const { access_token, expires_in } = getOAuthParams();
 removeHashParamsFromUrl();
 
-export function SpotifyLogin() {
+export function TwitterLogin() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const tokenExpiryDate = useSelector(selectTokenExpiryDate);
   const dispatch = useAppDispatch();
@@ -36,11 +34,11 @@ export function SpotifyLogin() {
     <VStack spacing="4">
       {!isLoggedIn &&
         <Button
-          colorScheme='green'
+          colorScheme='blue'
           aria-label="Log in using OAuth 2.0"
-          onClick={() => window.open(getPKCEAuthorizationHref(), '_self')}
+          onClick={() => window.open(getTwitterOauthUrl(), '_self')}
         >
-          Log in with Spotify
+          Log in with Twitter
         </Button>
       }
       {isLoggedIn &&
