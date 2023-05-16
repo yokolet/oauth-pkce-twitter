@@ -20,5 +20,5 @@ export const getOAuthParams = () => {
 }
 
 export const removeHashParamsFromUrl = () => {
-  window.history.pushState("", document.title, window.location.pathname + window.location.search);
+  window.history.pushState("", document.title, window.location.pathname);
 }

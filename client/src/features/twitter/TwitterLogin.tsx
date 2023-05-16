@@ -9,7 +9,7 @@ import {
 } from '../auth/authSlice';
 import { setUserProfileAsync } from './twitterSlice';
 import { getTwitterOauthUrl } from '../../utils/twitterOauthConfig';
-import { getOAuthParams, getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
+import { getOAuthParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
 import { useAppDispatch } from '../../app/hooks';
 import { Button, Text, VStack } from '@chakra-ui/react';
 
