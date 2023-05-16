@@ -1,10 +1,14 @@
-import { CLIENT_URL, SERVER_PORT, JWT_SECRET, prisma } from "./spotifyConfig";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-import { spotifyOauth } from './spotifyOauth2';
-import { getTwitterUser, twitterOauth } from './twitterOauth2';
 import jwt from 'jsonwebtoken'
+import {
+  CLIENT_URL,
+  SERVER_PORT,
+  JWT_SECRET,
+  prisma
+} from "./twitterConfig";
+import { getTwitterUser, twitterOauth } from './twitterOauth2';
 import { User } from "@prisma/client";
 
 const app = express();
@@ -26,7 +30,6 @@ app.get('/twitter/me', async (req, res)=>{
     const token = req.headers.authorization
     ? req.headers.authorization.split(' ')[1]
       : null;
-    //const token = req.cookies[TWITTER_COOKIE_NAME];
     if (!token) {
       throw new Error("Not Authenticated");
     }
@@ -50,7 +53,6 @@ app.get('/twitter/me', async (req, res)=>{
   }
 })
 
-app.get('/oauth/spotify', spotifyOauth);
 app.get('/oauth/twitter', twitterOauth);
 
 app.listen(SERVER_PORT, () => console.log(`Server listening on port ${SERVER_PORT}`))

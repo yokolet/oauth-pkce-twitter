@@ -1,16 +1,3 @@
-export const getHashParams = () => {
-  return window.location.hash
-    .substring(1)
-    .split("&")
-    .reduce(function(initial: { [key: string]: any; }, item) {
-      if (item) {
-        var parts = item.split("=");
-        initial[parts[0]] = decodeURIComponent(parts[1]);
-      }
-      return initial;
-    }, {});
-}
-
 export const getOAuthParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
   return {
